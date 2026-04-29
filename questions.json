@@ -1,0 +1,142 @@
+[
+  {
+    "id": "q1",
+    "question": "What is the difference between a list and a tuple in Python?",
+    "topic": "python_basics",
+    "level": 1,
+    "ideal_answer": "Lists are mutable (can be changed after creation) while tuples are immutable (cannot be changed). Lists use square brackets [], tuples use parentheses (). Tuples are generally faster and used for fixed data, while lists are used when the collection needs to change. Tuples can be used as dictionary keys, lists cannot."
+  },
+  {
+    "id": "q2",
+    "question": "What does Big-O notation mean? Give an example of O(n) and O(1) operations.",
+    "topic": "complexity",
+    "level": 1,
+    "ideal_answer": "Big-O notation describes the worst-case time or space complexity of an algorithm as input size grows. O(1) means constant time regardless of input size — e.g., accessing an array element by index. O(n) means time grows linearly with input — e.g., a single loop through an array of n elements."
+  },
+  {
+    "id": "q3",
+    "question": "What is a hash map and what is its average time complexity for insert, delete, and lookup?",
+    "topic": "data_structures",
+    "level": 1,
+    "ideal_answer": "A hash map (dictionary in Python) stores key-value pairs. It uses a hash function to map keys to indices in an underlying array. Average time complexity for insert, delete, and lookup is O(1). Worst case is O(n) due to hash collisions. Python's dict and set are implemented as hash maps."
+  },
+  {
+    "id": "q4",
+    "question": "Explain recursion and write a recursive function to compute the factorial of n.",
+    "topic": "recursion",
+    "level": 2,
+    "ideal_answer": "Recursion is when a function calls itself with a smaller subproblem until it hits a base case. Factorial: def factorial(n): return 1 if n <= 1 else n * factorial(n-1). Key components are: base case (n<=1 returns 1) to prevent infinite recursion, and the recursive case that reduces n toward the base."
+  },
+  {
+    "id": "q5",
+    "question": "What is the difference between BFS and DFS? When would you prefer one over the other?",
+    "topic": "graphs",
+    "level": 2,
+    "ideal_answer": "BFS (Breadth-First Search) explores level by level using a queue — best for finding shortest paths in unweighted graphs. DFS (Depth-First Search) explores as deep as possible using a stack/recursion — best for cycle detection, topological sort, or when the solution is deep in the tree. BFS uses O(w) space (width), DFS uses O(h) space (height)."
+  },
+  {
+    "id": "q6",
+    "question": "Explain the two-pointer technique and describe a problem where it reduces complexity from O(n²) to O(n).",
+    "topic": "arrays",
+    "level": 2,
+    "ideal_answer": "Two pointers use two indices that move through the array — often from opposite ends or at different speeds. Classic example: finding a pair that sums to a target in a sorted array. Naive O(n²) checks all pairs; two pointers start at index 0 and n-1, move inward based on sum comparison — achieving O(n). Also used in 3Sum, container with most water, and removing duplicates."
+  },
+  {
+    "id": "q7",
+    "question": "What is dynamic programming? Explain memoization vs tabulation with a Fibonacci example.",
+    "topic": "dynamic_programming",
+    "level": 3,
+    "ideal_answer": "DP solves problems by breaking them into overlapping subproblems and storing results to avoid recomputation. Memoization is top-down: recursive calls cache results in a dict (fib(n) stores computed values). Tabulation is bottom-up: iteratively fill a table from base cases upward. Both reduce naive O(2^n) Fibonacci to O(n) time and O(n) space. Tabulation can be further optimized to O(1) space."
+  },
+  {
+    "id": "q8",
+    "question": "Design a stack that supports push, pop, and getMin in O(1) time and O(1) extra space.",
+    "topic": "data_structures",
+    "level": 3,
+    "ideal_answer": "Store pairs (value, current_min) in the stack. On push, current_min = min(value, stack[-1][1]) if stack else value. On pop, return the value from the pair. getMin returns stack[-1][1]. This encodes the running minimum into each element, so no extra data structure is needed. Each operation is O(1)."
+  },
+  {
+    "id": "q9",
+    "question": "Explain how quicksort works. What is its average vs worst-case complexity and how can you mitigate worst case?",
+    "topic": "sorting",
+    "level": 3,
+    "ideal_answer": "Quicksort picks a pivot, partitions the array so elements smaller are left and larger are right, then recursively sorts both halves. Average O(n log n) — partition splits array roughly in half each time. Worst case O(n²) when pivot is always the min/max (e.g., sorted array with first-element pivot). Mitigation: random pivot selection, median-of-three, or Introsort (used in Python's sort)."
+  },
+  {
+    "id": "q10",
+    "question": "What is a trie (prefix tree)? Implement insert and search for a trie in Python.",
+    "topic": "data_structures",
+    "level": 3,
+    "ideal_answer": "A trie is a tree where each node represents a character, and paths from root to a node spell out a prefix. Insert: for each char, create child node if missing, mark end-of-word. Search: traverse nodes for each char, return True if end-of-word flag is set. Time: O(m) per operation where m is word length. Used in autocomplete, spell checkers, IP routing."
+  },
+  {
+    "id": "q11",
+    "question": "Explain Dijkstra's algorithm. What data structure makes it efficient and what is its time complexity?",
+    "topic": "graphs",
+    "level": 4,
+    "ideal_answer": "Dijkstra finds shortest paths from a source node in a weighted graph with non-negative edges. It greedily picks the unvisited node with the smallest known distance. Using a min-heap (priority queue), complexity is O((V + E) log V). The heap efficiently finds the next minimum. It fails with negative edges — use Bellman-Ford instead. Key: relax all neighbors of the extracted node."
+  },
+  {
+    "id": "q12",
+    "question": "What is the knapsack problem? Solve the 0/1 variant using dynamic programming.",
+    "topic": "dynamic_programming",
+    "level": 4,
+    "ideal_answer": "Given items with weights and values, maximize value without exceeding capacity W. 0/1 means each item is used at most once. DP table dp[i][w] = max value using first i items with capacity w. Recurrence: if item weight > w, dp[i][w] = dp[i-1][w]; else dp[i][w] = max(dp[i-1][w], dp[i-1][w-weight[i]] + value[i]). Time O(nW), space O(nW) reducible to O(W)."
+  },
+  {
+    "id": "q13",
+    "question": "Implement LRU Cache with O(1) get and put. What data structures do you use and why?",
+    "topic": "data_structures",
+    "level": 4,
+    "ideal_answer": "Combine an OrderedDict (or explicit doubly linked list + hashmap). Hashmap gives O(1) key lookup. Doubly linked list gives O(1) insertion/deletion at any position. On get: return value and move to front (most recent). On put: insert at front; if capacity exceeded, evict from back (least recent). Python's OrderedDict.move_to_end() handles this neatly."
+  },
+  {
+    "id": "q14",
+    "question": "Given a directed graph, detect if it contains a cycle. Explain both DFS-based and Kahn's algorithm (BFS/topological sort) approaches.",
+    "topic": "graphs",
+    "level": 4,
+    "ideal_answer": "DFS approach: maintain a 'visiting' set (gray) and 'visited' set (black). If DFS reaches a gray node, a cycle exists. Time O(V+E). Kahn's algorithm: compute in-degrees, start BFS from all 0-in-degree nodes, reduce neighbors' in-degrees. If processed node count < V, a cycle exists (some nodes never hit 0 in-degree). Both O(V+E). Kahn's naturally gives topological order if no cycle."
+  },
+  {
+    "id": "q15",
+    "question": "Design a system for rate limiting API requests (e.g., 100 requests per user per minute). Discuss at least two algorithms.",
+    "topic": "system_design",
+    "level": 5,
+    "ideal_answer": "Token Bucket: each user has a bucket refilled at fixed rate; requests consume tokens; allows bursts. Sliding Window Log: store timestamps of requests in a sorted set; count requests in last 60s window; O(n) memory. Sliding Window Counter: hybrid — combine fixed window counters with a weighted estimate of previous window; O(1) memory. Fixed Window Counter is simplest but allows 2x burst at window boundary. Redis is typically used as the shared counter store for distributed systems."
+  },
+  {
+    "id": "q16",
+    "question": "Explain the CAP theorem and describe a real-world scenario where you'd sacrifice consistency vs availability.",
+    "topic": "system_design",
+    "level": 5,
+    "ideal_answer": "CAP: a distributed system can guarantee at most two of Consistency (all nodes see same data), Availability (every request gets a response), and Partition Tolerance (system works despite network splits). Partition tolerance is mandatory in distributed systems. Sacrifice consistency: DNS, shopping carts, social feeds — eventual consistency is fine. Sacrifice availability: banking transactions, inventory reservations — stale data is unacceptable. DynamoDB is AP; HBase is CP."
+  },
+  {
+    "id": "q17",
+    "question": "What is a segment tree? Implement range sum query and point update in O(log n).",
+    "topic": "advanced_data_structures",
+    "level": 5,
+    "ideal_answer": "A segment tree is a binary tree where each node stores aggregate info (sum, min, max) over an array range. Built in O(n). Point update: traverse from root to leaf, updating nodes on the path — O(log n). Range query: recursively combine results from relevant children — O(log n). Internal nodes at index i have children at 2i and 2i+1. Used in competitive programming for range queries with frequent updates."
+  },
+  {
+    "id": "q18",
+    "question": "Solve the 'Median of Two Sorted Arrays' problem in O(log(min(m,n))) time. Explain the binary search approach.",
+    "topic": "binary_search",
+    "level": 5,
+    "ideal_answer": "Binary search on the smaller array's partition point. For a partition at i in array A and j=(m+n+1)/2 - i in array B, check if A[i-1] <= B[j] and B[j-1] <= A[i]. If so, median is found from the boundary elements. If A[i-1] > B[j], move i left; if B[j-1] > A[i], move i right. Key insight: we're finding the correct partition that splits the combined sorted array in half without actually merging. O(log(min(m,n)))."
+  },
+  {
+    "id": "q19",
+    "question": "What is consistent hashing and why is it used in distributed systems like caching layers?",
+    "topic": "system_design",
+    "level": 5,
+    "ideal_answer": "Consistent hashing maps both nodes and keys onto a circular ring (hash space 0 to 2^32). Each key is assigned to the nearest node clockwise. When a node is added/removed, only keys between the new node and its predecessor are remapped — on average K/N keys (K=keys, N=nodes) vs K keys in naive modular hashing. Virtual nodes improve load distribution. Used in DynamoDB, Cassandra, Memcached for horizontal scaling."
+  },
+  {
+    "id": "q20",
+    "question": "Design a distributed URL shortener (like bit.ly) that handles 100M requests/day. Walk through key components.",
+    "topic": "system_design",
+    "level": 5,
+    "ideal_answer": "Key components: 1) ID generation — base62 encoding of auto-increment IDs or MD5 hash (first 7 chars). 2) Storage — write-heavy: use DB with short_code as primary key; add cache (Redis) for read-heavy redirects. 3) Scale: ~1200 req/s, use load balancer + stateless app servers. 4) DB: SQL for ACID on writes, CDN/Redis cache for reads (cache hit rate >90%). 5) Analytics: async event stream (Kafka) for click tracking. 6) Expiry: TTL on cache, background job for DB cleanup."
+  }
+]
